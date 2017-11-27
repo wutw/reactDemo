@@ -1,0 +1,64 @@
+@charset 'utf-8';
+$images:'./src/images/';
+
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, label, dl, dt, dd,fieldset, img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	list-style: none;
+}
+ 
+html,body{
+	 font-family: "Sans-serif" !important;
+}
+
+a{
+	&:link,&:visited,&:hover,&:active{
+		text-decoration:none !important;
+	}
+}
+
+%clearfix{
+	zoom:1;
+	&:after{
+		content:'';
+		display:block;
+		clear:both;
+
+
+	}
+}
+.none{
+	display:none !important;
+}
+.show{
+	display:block !important;
+}
+
+
+
+@mixin size($size:12px){
+	font-size:$size !important;
+}
+@mixin background($img){
+	background:url(#{$images}#{img}.png) no-repeat;
+}
+@mixin shadow($shadow...){
+	box-shadow:$shadow;
+}
+@mixin backgroundImage($color...){
+	background-image:linear-gradient(#{$color});
+}
+@mixin transition ($style...){
+	transition:#{$style};
+}
+@mixin max-screen($res){
+	@media (max-device-width:#{$res}px){
+		@content;
+	}
+}
+@mixin min-screen($res){
+	@media (min-device-width:#{$res}px){
+		@content
+	}
+}

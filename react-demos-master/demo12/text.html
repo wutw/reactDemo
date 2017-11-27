@@ -1,0 +1,74 @@
+   
+
+   <!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+   class RepoList extends React.Component {
+	   constructor() {
+	   super();
+	    this.state = {
+	      loading: true,
+	      error: null,
+	      data: null
+	    };
+	  }
+	  componentDidMount(){
+	  this.props.promise.then(
+	  value => this.setState({loading:false,data:value}),
+	  error => this.setState({loading:false,error:error})
+	  )
+
+	  }
+	  render(){
+	
+	  if(this.state.loading){
+	  return <span> loading...  </span>;
+
+
+	  }else if(this.state.error){
+	   return  <span> error...  </span>;
+
+	  }else if(this.state.data){
+	   let items = this.state.data.items;
+	   let value = items.map(function(repo,index){
+	   return(
+
+		  <li key={index}> <a href={repo.html_url}>{repo.name}</a> ({repo.stargazers_count} stars) <br/> {repo.description} </li>
+
+
+	   );
+
+	   });
+	     return (
+	     <ul> {value}</ul>
+	       
+	     )
+
+	  }
+
+
+
+	  }
+
+
+
+
+
+  };
+
+  ReactDOM.render(
+  <RepoList promise={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')} />,
+  document.getElementById('example')
+);
+
+     </script>
+  </body>
+</html>

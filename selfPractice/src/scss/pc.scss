@@ -1,0 +1,70 @@
+@charset 'utf-8';
+@import '_init';
+.logo{
+	height:64px;
+	img{
+		height:100%;
+	}
+}
+.ant-layout-header{
+	padding:0 !important;
+}
+.menu_title{
+	font-weight: 600;
+    font-size: 16px;
+    ul>li:last-child{
+    	float:right;
+    }
+}
+.carousel{
+	height:400px;
+	width:300px;
+	overflow:hidden;
+	img{
+		width:100%
+	}
+}
+
+.imageNews{
+	width:100%;
+	position: relative;
+	@extend %clearfix;
+	h2{
+		 	overflow: hidden;
+            width: 65%;
+            margin-top: 3%;
+            position:absolute;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+	}
+	p{
+	position: absolute;
+    bottom: 22%;
+    right: 7%;
+    font-size: 14px;
+    span{
+    	    margin-left: 20px;
+    }
+	}
+
+}
+.ant-badge + .ant-badge{
+		margin-left:30px;
+	}
+
+.menuStyle{
+ transition:(all .3s) !important;
+	z-index:9999,
+}
+
+.ant-upload-select-picture-card i {
+  font-size: 28px;
+  color: #999;
+}
+
+.ant-upload-select-picture-card .ant-upload-text {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+}
